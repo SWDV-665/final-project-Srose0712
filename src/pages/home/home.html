@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Character List</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h3 class="no-item" text-center *ngIf="loadItems().length === 0">
+    No Character is listed!
+  </h3>
+  <ion-list>
+    <ion-item-sliding  *ngFor="let item of loadItems(); let i = index">
+      <ion-item>
+        <h2>{{item.name}}</h2>
+        <h3>Class: {{item.class}}</h3>
+        <h3>Guild: {{item.guild}}</h3>
+        <h3>STR: {{item.stregnth}}</h3>
+        <h3>DEX: {{item.dexterity}}</h3>
+        <h3>AGI: {{item.agility}}</h3>
+        <h3>INT: {{item.intelligence}}</h3>
+        <h3>STA: {{item.stamina}}</h3>
+        <h3>WIS: {{item.wisdom}}</h3>
+      </ion-item>
+      <ion-item-options>
+        
+        <button (click)="editItem(item, i)" ion-button color="primary" icon-start>
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+
+        <button (click)="addFriend(item, i)" ion-button color="dark" icon-start>
+          <ion-icon name="freind"></ion-icon>
+          Add <br>
+          Friend
+        </button>
+
+        <button (click)="shareItem(item, i)" ion-button color="light" icon-start>
+          <ion-icon name="share"></ion-icon>
+          Share
+        </button>
+
+        <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  
+  <ion-fab top right>
+    <button (click)="addItem()" ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
+
